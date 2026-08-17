@@ -20,7 +20,12 @@ function Content({ partsList }){
   )
 }
 
-function Total({ totalExercisesQtd }) {
+function Total({ partsList }) {
+
+  const totalExercisesQtd = partsList.reduce((accumulator, currentValue) => {
+
+        return accumulator += currentValue.exercises
+    }, 0)
 
   return <p>Number of exercises {totalExercisesQtd}</p>
 }
@@ -29,30 +34,28 @@ function Total({ totalExercisesQtd }) {
 const App = () => {
   const course = 'Half Stack application development'
 
-   const part1 = {
-    name: 'Fundamentals of React',
-    exercises: 10
-  }
+  const partsList = [
+    {
+      name: 'Fundamentals of React',
+      exercises: 10
+    },
 
-  const part2 = {
-    name: 'Using props to pass data',
-    exercises: 7
-  }
+    {
+      name: 'Using props to pass data',
+      exercises: 7
+    },
 
-  const part3 = {
-    name: 'State of a component',
-    exercises: 14
-  }
-
-  const partsList = [part1, part2, part3]
-
-  const totalExercisesQtd = part1.exercises + part2.exercises + part3.exercises
+    {
+      name: 'State of a component',
+      exercises: 14
+    }
+  ]
 
   return (
     <div>
      <Header course={course}/>
      <Content partsList={partsList}/>
-     <Total totalExercisesQtd={totalExercisesQtd}/>
+     <Total partsList={partsList}/>
     </div>
   )
 }
