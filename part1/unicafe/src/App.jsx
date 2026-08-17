@@ -10,11 +10,17 @@ function Button({name, onClick}) {
   return <button onClick={onClick}>{name}</button>
 }
 
-function Stat({label, value}){
-  return <p>{label} {value}</p>
+function Stat({label, value, isPercentage = false}){
+  return <p>{label} {value} {isPercentage ? '%' : ''}</p>
 }
 
 function Content({goodCount, neutralCount, badCount}){
+
+  const totalFeedbacks = goodCount + neutralCount + badCount
+
+  const average = (goodCount - badCount)/totalFeedbacks
+
+  const positivePercentage = (goodCount/totalFeedbacks)*100
 
   return (
     <>
@@ -23,6 +29,9 @@ function Content({goodCount, neutralCount, badCount}){
         <Stat label={'good'} value={goodCount}/>
         <Stat label={'neutral'} value={neutralCount}/>
         <Stat label={'bad'} value={badCount}/>
+        <Stat label={'all'} value={totalFeedbacks}/>
+        <Stat label={'average'} value={totalFeedbacks ? average : 0}/>
+        <Stat isPercentage label={'positive'} value={totalFeedbacks? positivePercentage: 0}/>
       </div>
     </>
   )
