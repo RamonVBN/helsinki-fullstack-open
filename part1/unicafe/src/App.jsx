@@ -10,11 +10,11 @@ function Button({name, onClick}) {
   return <button onClick={onClick}>{name}</button>
 }
 
-function Stat({label, value, isPercentage = false}){
+function StatisticLine({label, value, isPercentage = false}){
   return <p>{label} {value} {isPercentage ? '%' : ''}</p>
 }
 
-function StatisticsContainer({goodCount, neutralCount, badCount}){
+function Statistics({goodCount, neutralCount, badCount}){
 
   const totalFeedbacks = goodCount + neutralCount + badCount
 
@@ -28,16 +28,16 @@ function StatisticsContainer({goodCount, neutralCount, badCount}){
       <>
         <h2>Statistics</h2>
         <div>
-          <Stat label={'good'} value={goodCount}/>
-          <Stat label={'neutral'} value={neutralCount}/>
-          <Stat label={'bad'} value={badCount}/>
-          <Stat label={'all'} value={totalFeedbacks}/>
-          <Stat label={'average'} value={average}/>
-          <Stat isPercentage label={'positive'} value={positivePercentage}/>
+          <StatisticLine label='good' value={goodCount}/>
+          <StatisticLine label='neutral' value={neutralCount}/>
+          <StatisticLine label='bad' value={badCount}/>
+          <StatisticLine label='all' value={totalFeedbacks}/>
+          <StatisticLine label='average' value={average}/>
+          <StatisticLine isPercentage label='positive' value={positivePercentage}/>
         </div>
       </>
     )
-    
+
   } else {
 
     return <p>No feedback given</p>
@@ -69,7 +69,7 @@ const App = () => {
       <Button onClick={handleGoodFeedback} name={'good'}/>
       <Button onClick={handleNeutralFeedback} name={'neutral'}/>
       <Button onClick={handleBadFeedback} name={'bad'}/>
-      <StatisticsContainer goodCount={good} neutralCount={neutral} badCount={bad} />
+      <Statistics goodCount={good} neutralCount={neutral} badCount={bad} />
     </div>
   )
 }
