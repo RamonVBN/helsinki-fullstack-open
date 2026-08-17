@@ -14,7 +14,7 @@ function Stat({label, value, isPercentage = false}){
   return <p>{label} {value} {isPercentage ? '%' : ''}</p>
 }
 
-function Content({goodCount, neutralCount, badCount}){
+function StatisticsContainer({goodCount, neutralCount, badCount}){
 
   const totalFeedbacks = goodCount + neutralCount + badCount
 
@@ -61,7 +61,7 @@ const App = () => {
       <Button onClick={handleGoodFeedback} name={'good'}/>
       <Button onClick={handleNeutralFeedback} name={'neutral'}/>
       <Button onClick={handleBadFeedback} name={'bad'}/>
-      <Content goodCount={good} neutralCount={neutral} badCount={bad} />
+      <StatisticsContainer goodCount={good} neutralCount={neutral} badCount={bad} />
     </div>
   )
 }
