@@ -4,12 +4,17 @@ function Header({ course }){
   return <h1>{course}</h1>
 }
 
+function Part({name, exercisesQtd}){
+
+  return <p> {name} {exercisesQtd}</p>
+}
+
 function Content({ partsList }){
 
   return (
     <>
       {
-        partsList.map((part) => <p> {part.name} {part.exercisesQtd}</p>)
+        partsList.map((part) => <Part key={part.name} name={part.name} exercisesQtd={part.exercisesQtd}/>)
       }
     </>
   )
