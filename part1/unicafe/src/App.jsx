@@ -22,19 +22,27 @@ function StatisticsContainer({goodCount, neutralCount, badCount}){
 
   const positivePercentage = (goodCount/totalFeedbacks)*100
 
-  return (
-    <>
-      <h2>Statistics</h2>
-      <div>
-        <Stat label={'good'} value={goodCount}/>
-        <Stat label={'neutral'} value={neutralCount}/>
-        <Stat label={'bad'} value={badCount}/>
-        <Stat label={'all'} value={totalFeedbacks}/>
-        <Stat label={'average'} value={totalFeedbacks ? average : 0}/>
-        <Stat isPercentage label={'positive'} value={totalFeedbacks? positivePercentage: 0}/>
-      </div>
-    </>
-  )
+  if (totalFeedbacks > 0) {
+
+    return (
+      <>
+        <h2>Statistics</h2>
+        <div>
+          <Stat label={'good'} value={goodCount}/>
+          <Stat label={'neutral'} value={neutralCount}/>
+          <Stat label={'bad'} value={badCount}/>
+          <Stat label={'all'} value={totalFeedbacks}/>
+          <Stat label={'average'} value={average}/>
+          <Stat isPercentage label={'positive'} value={positivePercentage}/>
+        </div>
+      </>
+    )
+    
+  } else {
+
+    return <p>No feedback given</p>
+  }
+
 }
 
 const App = () => {
