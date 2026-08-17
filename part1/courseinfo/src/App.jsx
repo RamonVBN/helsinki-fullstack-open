@@ -4,9 +4,9 @@ function Header({ course }){
   return <h1>{course}</h1>
 }
 
-function Part({name, exercisesQtd}){
+function Part({name, exercises}){
 
-  return <p> {name} {exercisesQtd}</p>
+  return <p> {name} {exercises}</p>
 }
 
 function Content({ partsList }){
@@ -14,7 +14,7 @@ function Content({ partsList }){
   return (
     <>
       {
-        partsList.map((part) => <Part key={part.name} name={part.name} exercisesQtd={part.exercisesQtd}/>)
+        partsList.map((part) => <Part key={part.name} name={part.name} exercises={part.exercises}/>)
       }
     </>
   )
@@ -28,31 +28,25 @@ function Total({ totalExercisesQtd }) {
 
 const App = () => {
   const course = 'Half Stack application development'
-  const part1 = 'Fundamentals of React'
-  const exercises1 = 10
-  const part2 = 'Using props to pass data'
-  const exercises2 = 7
-  const part3 = 'State of a component'
-  const exercises3 = 14
 
-  const partsList = [
-    {
-      name: part1,
-      exercisesQtd: exercises1
-    },
+   const part1 = {
+    name: 'Fundamentals of React',
+    exercises: 10
+  }
 
-    {
-      name: part2,
-      exercisesQtd: exercises2
-    },
+  const part2 = {
+    name: 'Using props to pass data',
+    exercises: 7
+  }
 
-    {
-      name: part3,
-      exercisesQtd: exercises3
-    },
-  ]
+  const part3 = {
+    name: 'State of a component',
+    exercises: 14
+  }
 
-  const totalExercisesQtd = exercises1 + exercises2 + exercises3
+  const partsList = [part1, part2, part3]
+
+  const totalExercisesQtd = part1.exercises + part2.exercises + part3.exercises
 
   return (
     <div>
