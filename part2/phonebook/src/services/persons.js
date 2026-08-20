@@ -14,7 +14,7 @@ function create(newPerson) {
 }
 
 function update(updatedPerson) {
-    return axios.patch(BASE_URL, updatedPerson)
+    return axios.put(BASE_URL.concat(`/${updatedPerson.id}`), updatedPerson)
     .then((response) => response.data) 
 }
 
