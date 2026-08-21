@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react"
 
 import axios from "axios"
-
-import personsService from "./services/persons"
-import Personform from "./PersonForm"
-import Filter from "./Filter"
-import Persons from "./Persons"
-import Notification from "./Notification"
+import Notification from "./components/Notification"
+import Filter from "./components/Filter"
+import Personform from "./components/PersonForm"
+import Persons from "./components/Persons"
+import personsService from './services/persons'
 
 const App = () => {
   const [persons, setPersons] = useState([])
